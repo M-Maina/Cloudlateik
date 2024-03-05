@@ -22,7 +22,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
-    Collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
+    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     Promotions =models.ManyToManyField(Promotion)
 
 
@@ -46,6 +46,13 @@ class Customer(models.Model):
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
 
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+    
+    class Meta:
+        ordering = ['first_name', 'last_name']
+
+
 class Order(models.Model):
     PAYMENT_PENDING = 'p'
     PAYMENT_COMPLETE = 'C'
@@ -57,7 +64,7 @@ class Order(models.Model):
     ]
     placed_at =models.DateTimeField(auto_now_add=True) #autopopulate
     payment_status = models.CharField(max_length=1, choices=PAYMENT_STATUS, default=PAYMENT_PENDING)
-    Customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
 
 
 class OrderItem(models.Model):
