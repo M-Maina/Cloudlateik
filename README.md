@@ -120,16 +120,16 @@ DJANGO_SECRET_KEY=gy_1$n9zsaacs^a4a1&-i%e95fe&d3pa+e^@5s*tke*r1b%*cu
 DATABASE_BACKEND=postgres
 
 # mysql db setup
-MYSQL_DATABASE=cfeblog-m-db
-MYSQL_USER=cfeblog-m-user
+MYSQL_DATABASE=Cloudlateik-m-db
+MYSQL_USER=Cloudlateik-m-user
 MYSQL_PASSWORD=RaSNF5H3ElCbDrGUGpdRSEx-IuDzkeHFL_S_QBuH5tk
 MYSQL_ROOT_PASSWORD=2mLTcmdPzU2LOa0TpAlLPoNf1XtIKsKvNn5WBiszczs
 MYSQL_TCP_PORT=3007
 MYSQL_HOST=127.0.0.1
 
 # postgres db setup
-POSTGRES_DB=cfeblog-p-db
-POSTGRES_USER=cfeblog-m-user
+POSTGRES_DB=Cloudlateik-p-db
+POSTGRES_USER=Cloudlateik-m-user
 POSTGRES_PASSWORD=NwgFCimzL0Oqd539EYzsztY04uzw2jaVEIrH1OK2sz0
 POSTGRES_PORT=5431
 POSTGRES_HOST=localhost
