@@ -22,7 +22,7 @@ cd ~/dev
 Fork or clone this repo:
 
 ```
-git clone https://github.com/codingforentrepreneurs/cfe-django-blog
+https://github.com/M-Maina/Cloudlateik.git
 ```
 
 ### Step 2: Create a Virtual Environment
