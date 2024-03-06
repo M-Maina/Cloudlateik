@@ -2,8 +2,25 @@ from django.db.models import Count
 from typing import Any
 from django.contrib import admin
 from django.db.models.query import QuerySet
-from django.http import HttpRequest
+from django.urls import reverse
+from django.utils.html import format_html, urlencode
 from . import models
+
+
+class InventoryFilter(admin.SimpleListFilter):
+    title = 'inventory'
+    parameter_name = 'inventory'
+
+    def lookups(self, request, model_admin):
+        return [
+            ('<10', 'Low')
+        ]
+    
+
+    def queryset(self, request, queryset):
+        if self.value() == '<10':
+            queryset.filter(inventory__lt=10)
+
 
 
 @admin.register(models.Collection)
@@ -12,7 +29,11 @@ class CollectionAdmin(admin.ModelAdmin):
 
     @admin.display(ordering='products_count')
     def products_count(self, collection):
-        return collection.products_count
+        url = reverse('admin:store_product_changelist') + '?' + urlencode({
+            'collection__id': str(collection.id)
+        })
+        return format_html('<a href="{}">{}</a>', url, collection.products_count)
+         
     
     def get_queryset(self, request):
         return super().get_queryset(request).annotate(
@@ -25,6 +46,7 @@ admin.site.register(models.OrderItem)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'price', 'inventory_status', 'collection_title']
     list_editable = ['price']
+    list_filter = ['collection', 'last_update', InventoryFilter]
     list_per_page = 10
     list_select_related = ['collection']
     
