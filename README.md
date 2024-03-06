@@ -17,7 +17,7 @@ mkdir -p ~/dev
 cd ~/dev
 ```
 
-> I always use the `~/Dev` folder which translates to `/users/cfe/Dev` (macOS / Linux) or `C:\Users\cfe\Dev` (windows). This location is optional.
+> I always use the `~/Dev` folder which translates to `/users/jeff/Dev` (macOS / Linux) or `C:\Users\jeff\Dev` (windows). This location is optional.
 
 Fork or clone this repo:
 
